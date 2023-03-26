@@ -1,7 +1,16 @@
 package ldap
 
-import "context"
+import (
+	"errors"
+)
 
-type IService interface {
-	GetUser(ctx context.Context, username, password string)
-}
+const (
+	adminGroupName     = "admin-users"
+	operatorGroupName  = "operator-users"
+	userGroupAttribute = "ou"
+)
+
+var (
+	ErrUserNotExists = errors.New("user not exists")
+	ErrUserNotUnique = errors.New("user not exists")
+)
