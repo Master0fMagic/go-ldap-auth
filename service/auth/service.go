@@ -27,6 +27,8 @@ func (s *Service) AuthenticateUser(username, password string) (*dto.User, error)
 		return nil, err
 	}
 
+	//todo generate token and save to redis
+
 	return &dto.User{
 		Username: username,
 		Role:     userGroup,
