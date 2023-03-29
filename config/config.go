@@ -6,11 +6,17 @@ import (
 )
 
 type Config struct {
-	LogLevel   string     `evn:"LOG_LEVEL" envDefault:"DEBUG"`
-	LdapConfig LdapConfig `envPrefix:"LDAP"`
+	LogLevel   string     `env:"LOG_LEVEL" envDefault:"DEBUG"`
+	LdapConfig LdapConfig `envPrefix:"LDAP_"`
 }
 
 type LdapConfig struct {
+	Url             string `env:"URL"`
+	BindUser        string `env:"BIND_USER"`
+	Password        string `env:"PASSWORD"`
+	BaseDn          string `env:"BASE_DN"`
+	UserFilter      string `env:"USER_FILTER"`
+	UserAuthPattern string `env:"USER_AUTH_PATTERN"`
 }
 
 func ReadConfig() (*Config, error) {
