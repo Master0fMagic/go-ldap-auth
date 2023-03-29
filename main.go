@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/Master0fMagic/go-ldap-auth/config"
+	"github.com/Master0fMagic/go-ldap-auth/service/auth"
 	"github.com/Master0fMagic/go-ldap-auth/storage/ldap"
 	log "github.com/sirupsen/logrus"
 )
@@ -18,11 +19,12 @@ func main() {
 	}
 	log.SetLevel(logLevel)
 
-	ldapService, err := ldap.New(cfg.LdapConfig)
+	ldapClient, err := ldap.New(cfg.LdapConfig)
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	defer ldapService.Close()
+	defer ldapClient.Close()
 	log.Infof("LDAP connection established")
+
+	authService := auth.New(ldapClient)
 }

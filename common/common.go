@@ -1,9 +1,9 @@
 package common
 
-type Role int16
+type Role string
 
 const (
-	None     Role = -1
-	Admin    Role = 1
-	Operator Role = 2
+	None     Role = "none"
+	Admin    Role = "admin"
+	Operator Role = "operator"
 )

@@ -11,11 +11,12 @@ type Config struct {
 }
 
 type LdapConfig struct {
-	Url       string `env:"URL"`
-	BindUser  string `env:"BIND_USER"`
-	Password  string `env:"PASSWORD"`
-	BaseDn    string `env:"BASE_DN"`
-	UserFiler string `env:"USER_FILTER"`
+	Url             string `env:"URL"`
+	BindUser        string `env:"BIND_USER"`
+	Password        string `env:"PASSWORD"`
+	BaseDn          string `env:"BASE_DN"`
+	UserFilter      string `env:"USER_FILTER"`
+	UserAuthPattern string `env:"USER_AUTH_PATTERN"`
 }
 
 func ReadConfig() (*Config, error) {
